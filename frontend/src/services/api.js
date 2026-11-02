@@ -1,10 +1,12 @@
 import axios from 'axios'
 
 // All API calls go through Vite's proxy -> Flask on port 5000
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${API_BASE_URL}/api`,
   headers: { 'Content-Type': 'application/json' },
-  timeout: 15000,
+  timeout: 30000,
 })
 
 // Attach verified JWT Bearer token from localStorage to every request
