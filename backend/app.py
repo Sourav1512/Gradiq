@@ -67,14 +67,17 @@ def create_app() -> Flask:
     return app
 
 
+# Create Flask application instance for Gunicorn
+app = create_app()
+
 if __name__ == "__main__":
-    application = create_app()
     print("=" * 55)
     print(" Gradiq – Student Performance Prediction System")
     print(f" Running on http://localhost:{Config.FLASK_PORT}")
     print(" Press Ctrl+C to stop")
     print("=" * 55)
-    application.run(
+
+    app.run(
         host="0.0.0.0",
         port=Config.FLASK_PORT,
         debug=Config.DEBUG
